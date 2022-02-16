@@ -10,8 +10,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(readr)
 library(tidyverse)
 library(janitor) # clean names function
-completions2020raw <- read_csv("2020 US Completions raw.csv")
-completions2019raw <- read_csv("2019 US Completions raw.csv")
+completions2020raw <- read_csv("example datasets/2020 US Completions raw.csv")
+completions2019raw <- read_csv("example datasets/2019 US Completions raw.csv")
 
 source("Data work/processing scripts.R")
 ```
@@ -82,7 +82,7 @@ This section will describe data processing that has been carried out in support 
 ### State data
 The following data-frame contains the state for each institution within the U.S. The information contained within this dataset will be used to aid in specifying the particular region of interest for this analysis. 
 ```{r}
-states <- read_csv("State abbreviations.csv")
+states <- read_csv("Data work/State abbreviations.csv")
 head(states)
 ```
 First, you will need to create a list of all of the states within the region. For example, here is a list of the three states within the Northeast that INCLUDES will focus on.
