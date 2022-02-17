@@ -6,7 +6,7 @@ states <- read_csv("Data work/State abbreviations.csv") %>% clean_names()
 
 proportion_processing <- function(ds, statelist){
   ds <- ds %>% left_join(states, by = "unitid") %>%
-    rename(state = hd_2020_state_abbreviation, year = year.x, institution_name = institution_name.x) %>%
+    rename(state = hd2020_state_abbreviation, year = year.x, institution_name = institution_name.x) %>%
     filter(state %in% statelist) %>%
     mutate(degree_group = if_else(degree == "Bachelor's", "Undergraduate",
                                   if_else(degree != "Associate's", "Graduate", "2yr"))) %>%
@@ -99,7 +99,7 @@ proportion_processing <- function(ds, statelist){
   
   # engineering comparison dataframe with school proportions
   total_comp_for_join <- total_comp %>%
-    select(-c(regional_prop, diff, count, institution_name))
+    select(-c(regional_prop, count, institution_name))
   
   engineering_comp_all <- inner_join(engineering_comp, total_comp_for_join, by = c("unitid", "year", "degree_group", "gender", "race_ethnicity")) %>%
     mutate(within_school_diff = obs_prop - school_prop) %>%
